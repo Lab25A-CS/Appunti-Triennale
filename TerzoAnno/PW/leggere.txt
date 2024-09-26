@@ -1,0 +1,1 @@
+prova per far comparire le sottocartelle quando avviene un pull. Eliminare quando la cartella corrente viene popolata.
