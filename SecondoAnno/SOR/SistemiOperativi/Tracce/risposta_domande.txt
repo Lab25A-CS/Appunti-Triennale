@@ -1,0 +1,102 @@
+DOMANDE 1 
+Il candidato discuta l’importanza dello scheduling nei sistemi batch, con particolare attenzione ai parametri
+che si cercano di ottimizzare in questi sistemi. Si chiede di presentare e descrivere almeno tre metodi di
+scheduling differenti applicati nei sistemi batch, specificando
+• quali aspetti di performance ciascuno di essi mira a migliorare
+• gli eventuali limiti
+
+RIPSOSTA 1
+
+Gli algoritmi scheduling all'interno dei sistemi batch presenta degli obiettivi ben differenti dagli algoritmi degli altri sistemi in quanto
+all'interno dei sistemi batch lo scheduler deve garantire tre cose:
+- minimizzare il tempo di tournaround (ovvero il tempo che trascorre un job da quando viene schedulato a quando termina)
+- massimizzare il throughtput (ovvero il numero di job portati a termine in un determinato lasso di tempo)
+- mantenere la cpu il piu attiva possibile.
+Lo scheduler riesce a garantire queste tre caratteristiche ponendo anche molta attenzione nel bilanciamento di processi cpu-bound(processi che presentano lunghi burst di cpu inframezzati da brevi attese di I/O)
+e I/O-bound(processi che presentano brevi burst di cpu e lunghe attese di I/O)
+detto questo gli algoritmi di scheduling che sono stati creati per i sistemi batch sono 3:
+il primo che esaminiamo è il FCFS(first come first served):
+--- questo algoritmo innanzitutto non prevede prelazione (ovvero i job rilasciano la cpu solo nel momento in cui o sono terminati o attendo un dispositivo di I/O) e presenta un 
+    funzionamento molto basilare ovvero: il primo job ad arrivare sarà quello a cui verrà assegnata la cpu mentre i job successivi verranno posti all'interno di una lista (piu precisamente
+    a livello della coda) e quando il job in esecuzione rilascia la cpu, questa verrà assegnata al processo immediatamente successivo all'interno della lista.
+    il vantaggio principale di quest'algoritmo è che sia molto semplice da implementare e sicuramente corretto, ma presenta due grandi svantaggi, ovvero innanzitutto non gestisce quelli che sono 
+    le differenze fra job cpu-bound e I/O-bound (se un processo I/O-bound viene accodato ad uno cpu_bound attenderà molto piu di quanto dovrebbe attendere normalmente) e non si pensa
+    minimamente a minimizzare il tempo di tournaround dei singoli pricessi.
+il secondo algoritmo è il SJF(shortest job first):
+    il quale mira a risolvere quello che era il problema principale del FCFS ovvero cerca di minimizzare il tempo fi tournaround.
+    Bisogna inoltre specificare che anche questo è un algoritmo che non usufruisce della prelazione.
+    Questo algoritmo funziona in maniera molto semplice, ovvero nel momento in cui arrivano i vari job si calcola quello che è il tempo di cui necessitano della cpu e l'algoritmo
+    la assegna al job con il tempo di esecuzione minore, questo concetto viene ripetuto ogni volta che un job rilascia la cpu. In questo modo si garantisce che job che presentano tempo di esecuzione breve
+    saranno i primi a venir eseguiti, in modo tale da abbassare enormenente quello che è il tempo medio di tournaround del sistema. Detto questo questo algoritmo presenterà sicuramente
+    enormi passi in avanti rispetto al FCFS ma presenta ancora un problema, ovvero che se i processi arrivano in maniera sequenziale e non a blocchi, job magari anche molto brevi dovranno comunque aspettare
+    che l'esecuzione di job lunghi termini.
+Per risolvere questo problema è stato creato il shortest job next:
+    il quale mira a risolvere questo problema innanzitutto utilizzando la prelazione, ma in che modo?
+    L'algoritmo praticamente forzerà il cedimento della cpu da parte del job in esecuzione nel momento in cui arrivasse (mentre il job è in esecuzione) un job il cui tempo di esecuzione
+    sia minore del tempo d'esecuzione del job che ha assehìgnato la cpu.
+    In questo modo riusciamo a garantire che job brevi presenteranno sicuramente dei tempi di tournaround brevi e che i job lunghi sicuramente avranno la cpu assegnata e verranno portati a termine.
+
+DOMANDA 2
+il candidato spieghi il concetto di memoria virtuale e il suo ruolo nella gestione della memoria RAM da parte
+di un sistema operativo moderno. Si discuta come la memoria virtuale permetta di gestire programmi che superano la capacità della memoria fisica disponibile.
+Si descrivano inoltre le tecniche di paging e segmentazione,evidenziando come queste tecniche abbiano migliorato l’efficienza e la gestione della memoria nei computer
+
+RISPOSTA 2
+
+La memoria virtuale è un'ulteriore astrazione della memoria che si basa sul concetto di registro base e registro limite, i quali sono stati pensati per permettere la rilocazione 
+dinamica e la protezione fra processi.
+A conti fatti la memoria virtuale consiste nella creazione di uno spazio di indirizzi per ogni ogni processo, chiamato spazio degli indirizzi virtuale, il quale è indirizzabile fino a 48 bit 
+(ovvero molto piu di qualsiasi memoria ram) e viene suddiviso in intervalli di indirizzi contigui chiamati pagine, le quali sono di dimensione fissa (4K).
+La divisone dello spazio degli indirizzi virtuali in pagine permette di gestire il bloatware, ovvero il problema della richiesta di memoria da parte dei processi quando questa non è disponibile.
+Questo problema viene risolto poichè si è notato che non tutte le pagine appartenenti ad un processo si debbano essere mappate in memoria affinchè il processo in questione possa venir eseguito correttamente.
+Ma come funziona effettivamente la memoria virtuale?
+Innanzitutto ora lo spazio degli indirizzi virtuale è l'unico visibile dalla cpu e dai processi, infatti ora i processi nel moento in cui richiedono un'instruzione ora richiedono un indirizzo virtuale,
+il quale viene mandato dalla MMU (una componentistica hardware la quale svolge il compito di tradurre l'indirizzo virtuale in indirizzo fisico), l'MMU prima di eseguire la traduzione dell'indirizzo
+controlla se la pagina in questione non si trovi all'interno della TLB (Transition Lockside buffer, componentistica hardware la quale contiene una tabella delle pagine ristretta),
+se la pagina sarà presente all'interno della TLB, l'istruzione verrà prelevata e mandata alla cpu, altrimenti avverrà una soft miss e l'MMU dovrà controllare all'interno della tabella delle pagine se la pagina sia mappata o no in memoria, 
+se lo è la pagina viene posta all'interno della TLB e l'istruzione verrà portata alla cpu, altrimenti avverrà una hard miss, ovvero un page fault, durante il quale il SO deve innanzitutto capire dove si trovi la pagina
+all'interno del disco, verificarne i bit di protezione e la validità, e andarla a trasportare in memoria, dove se ci sarà un frame libero allora non ci sono ulteriori complicazioni, l'istruzione viene prelevata dalla pagina e mandata alla cpu,
+ma può accadere che la memoria sia completamente piena, in questo caso bisogna liberare un frame spostando una pagina presente in memoria su disco, questo avvinee tramite un algoritmo di sostituzione delle pagine, e mappando la pagina richiesta.
+Possiamo notare come l' hard miss sia enormemente piu lenta di una soft miss, per questo gli algoritmi che gestiscono il page fault devono essere ottimizzati il piu possibile.
+La paginazione però non è l'unico metodo esistente per mettere in atto l'astrazione della memoria virtuale, esiste anche la segmentazione, la quale permette di dividere lo spazio degli indirizzi virtuale piuttosto che in pagine in segmenti, 
+il quale hanno una dimensione variabile e permettono una gestione migliore dello spazio degli indirizzi del processo, in quanto un segmento a differenza di una pagina può:
+-venir paginato a sua volta,
+-venir protetto meglio,
+-può esser condiviso piu facilmente fra i processi 
+-può crescere in maniera dislocata da tutti gli altri segmenti
+La segmentazione a tutti gli effetti è migliore della paginazione ma richiede una gestione molto piu attenta riguardo a tutto quello che concerne avere l'astrazione del segmento all'interno del priprio SO,
+per colpa di questa gestione e del fatto che ormai lo spazio degli indirizzi virtuale sia così tanto esteso che non c'è piu bisogno di un'ulteriore protezione fra i dati all'interno dello spazio degli indirizzi.
+
+DOMANDA 3
+Discutere dell’importanza dei file, delle tipologie di file e della loro implementazione
+
+RISPOSTA 3
+Quella del file è un'astrazione necessaria e fondamentale all'interno del file system in quanto permette di garantire la persistenza dei dati nel tempo, una condivisione facilitata degli stessi e 
+una gestione di un gran quantitativo di dati, grantendone pur sempre una scrittura e lettura facilitata.
+Esistono vari tipi di file e li possiamo dividere principalmente in file normali e speciali:
+i file speciali sono i file che vengono utilizzati per gestire i dispositivi di I/O e possono essere di due tipi:
+file a caratteri e file a blocchi, i file a caratteri vengono utilizzati per modellare quei dispositivi che usufruiscono di flussi di byte (come ad esempio mouse, taastiere, stampanti , etc..), 
+quelli a blocchi invece vengono utilizzati per modellare i dispositivi che usufruiscono di blocchi di byte, i quali sono principalmente le memorie rom (dischi, pennette usb, ssd e così via).
+i file normali invece possono essere a loro volta divisi in due gruppi:
+file ascii, ovvero file i quali possono essere interpretati tramite la codifica ascii e quindi essere letti dall'utente.
+oppure file binari: file i quali sono costituiti da 0 e 1 e strutturati in una maniera ben precisa in modo tale che possano essere letti dal sistema operativo.
+ritroviamo due tipologie di file binari, i file eseguibili (i quali presentano un'intestazione con all'interno le informazioni relative al file, come grandezza, data di creazione, utente che lo ha creato, permessi e così via,
+ed il magic number, un bit che sta ad indicare che il file può essere eseguito oppure no), successivamente ritroviamo i dati e le isttuzioni e infine una tabella dei simboli (utile al debugging).
+L'altra tipologia di file binario è quello di archivio il quale è utilizzato per comprimere piu file, infatti presenta una struttura basata su coppie formate da intestazione del modulo dell'oggetto (contenente tutte le caratteristiche del file) e
+modulo dell'oggetto (all'interno del quale troviamo il file compresso vero e proprio).
+Il file all'interno del file system può essere implementato in 4 modi diversi:
+il primo modo è implementarlo come una scrittura sequenziale all'interno del disco, la quale permette un buon accesso sequenziale e casuale, ma pessime prestazioni nel momento in cui si comincia a parlare di 
+frammentazione del disco.
+Per risolvere il problema della frammentazione si è pensato di suddividere il  file in blocchi di dimensione fissa ed associare ogni blocco ad un nodo di una linked list, in questo modo si ottiene un buon accesso sequenziale e si riduce in maniera sostanziale la frammentazione, 
+al netto però di rendere incredibilmente lente le prestazioni riguardanti l'accesso casuale al file, in quanto questo non è possibile da effettuare all'interno di una linked list.
+La terza implementazione è tramite una tabella, chiamata file allocation table (FAT), la quale deve essere costantemente caricata in memoria e presenta una voce per ogni blocco del disco, dove ritroviamo un puntatore al blocco del file e l'indirizzo della voce da leggere 
+se si vuole continuare con la lettura del file. Questa implementazione garantisce buone prestazioni riguardo accesso sequenziale e casuale, riuscendo a mitigare il piu possibile la frammentazione del disco.
+L'unico problema della FAT è la sua grandezza in quanto il fatto che debba essere costantemente caricata in memoria comincia a diventare oneroso nel momento in cui andremo a lavorare
+con dischi molto grandi, in quanto sprecare molti giga di memoria ram solo per mappare dei file non è il massimo. Detto questo la FAT viene usata ancora oggi all'interno di memorie di grandezze ristrette, come ad esempio pennette usb e schede sd.
+L'ultima modalità di implementazione è l'I-node (o index node) il quale consiste in una struttura dati contenuta all'interno di un blocco, formata da : un'intestazione nella quale troviamo tutte le informazioni relative al file tranne che il nome e il contenuto, 
+e una serie di puntatori ai blocchi su disco i quali contengono i dati appartenenti al file, e infine l'ultimo puntatore punterà ad un ulteriore blocco di puntatori nel caso in cui 
+un singolo I-node non sia abbastanza per gestire il file nella sua interezza. Il vantaggio principale dell'I-node consiste nello spazio che occupa, in quanto l'I-node occupa spazio in proporzione ai file che sono aperti e non in proporzione alla grandezza della memoria,
+mantenendo pur sempre ottime prestazioni riguardanti accesso casuale e sequenziale.
+
+
+
