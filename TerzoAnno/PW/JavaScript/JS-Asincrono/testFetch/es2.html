@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="prof"></div>
+    <script>
+      const prof = document.querySelector(".prof");
+      const loadProf = function () {
+        const resp = fetch("data.json");
+        resp
+          .then((val) => val.json())
+          .then((data) => {
+            console.log(data);
+            data.forEach((element) => {
+              const p = document.createElement("p");
+              p.innerText = "Prof." + element.docente+" Corso: "+element.corso;
+              prof.appendChild(p);
+            });
+          });
+      };
+
+      loadProf();
+    </script>
+  </body>
+</html>

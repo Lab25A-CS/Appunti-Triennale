@@ -1,0 +1,8 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+#dog-image {
+    max-width: 80%;
+    margin: 20px auto;
+}

@@ -1,0 +1,109 @@
+body{
+    background-color: #022B3A;
+}
+
+.page{
+    background-color: antiquewhite;
+    margin: 0 auto;
+    width: 800px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow';
+}
+
+.header{
+    font-size: 31px;
+    display: flex;
+    align-items: center;
+    height: 100px;
+}
+.header p{
+    font-size: 60px;
+    color: #1F7A8C;
+    
+}
+
+.colonne{
+    display: flex;
+    border-top: 3px solid #022B3A;
+    border-bottom: 3px solid #022B3A;
+    text-align: justify;
+
+}
+
+.colonna1{
+    width: 15%;
+    border-right: 1px solid #022B3A;
+    text-align: right;
+}
+
+.colonna2{
+    width: 55%;
+    border-right: 1px solid #022B3A;
+    padding: 5px ;
+    padding-right: 5px;
+    padding-left: 5px;
+
+}
+
+.colonna3{
+    width: 30%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.colonna2 h2{
+    margin-top: 5px;
+}
+
+.colonna3 h3{
+    margin-top: 15px;
+}
+
+li{
+    margin-bottom: 5px;
+}
+
+a{
+    color: #1F7A8C;
+}
+
+ul{
+    list-style: none;
+    text-align: right;
+    padding-right: 10px;
+}
+
+
+.footer{
+    height: 150px;
+}
+
+@media (max-width:800px){
+    .page{
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    li{
+        display: inline;
+    }
+
+    .colonne{
+        flex-wrap: wrap;
+    }
+
+    .colonna1{
+        width: 100%;
+        border: 0px;
+    }
+    .colonna2{
+        width: 100%;
+        border-bottom: 3px solid #022B3A;
+        border-right: 0px;
+        padding-right: 15px;
+        padding-left: 15px;
+
+    }
+    .colonna3{
+        width: 100%;
+    }
+}

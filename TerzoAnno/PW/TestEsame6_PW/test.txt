@@ -1,0 +1,11 @@
+4 Punti) Crea una pagina HTML contenente tre sezioni: header, main content, e footer. Il contenuto deve essere centrato orizzontalmente rispetto al viewport, avere una larghezza minima di 600px, margini superiori e inferiori di 20px. Il titolo dell'header deve essere centrato e avere margini di 10px sopra e sotto. L'header e il footer devono avere un bordo di 2px solido con colore #333.
+
+(5 Punti) Scrivi le regole CSS per adattare il layout della pagina a diverse dimensioni di viewport. Se il viewport è maggiore di 800px, la larghezza della pagina deve essere 80%. Se il viewport è maggiore di 1200px, la larghezza della pagina deve essere 70%.
+
+(6 Punti) Crea un file JSON contenente un elenco di articoli, ciascuno con un titolo e un contenuto. Scrivi una funzione JavaScript che carichi questo file JSON e generi dinamicamente delle sezioni nella parte main della pagina con i dati degli articoli.
+
+(8 Punti) Aggiungi un overlay che si attiva al cliccare un bottone nel footer. L'overlay deve occupare il 100% della larghezza e altezza del viewport, avere uno sfondo semi-trasparente nero e un messaggio centrale di "Benvenuto" con un bottone per chiudere l'overlay. Scrivi il codice JavaScript necessario per mostrare e nascondere l'overlay.
+
+(7 Punti) Implementa una funzione che crea dinamicamente una griglia di articoli caricati dal file JSON. Gli articoli devono essere visualizzati in una griglia responsive con una colonna su mobile, due colonne su tablet e tre colonne su desktop
+
+(10 Punti) Configura un semplice web server usando Node.js e il pacchetto Express. Il server deve servire i file HTML, CSS, e JavaScript necessari per il progetto, oltre a restituire il file JSON quando richiesto.

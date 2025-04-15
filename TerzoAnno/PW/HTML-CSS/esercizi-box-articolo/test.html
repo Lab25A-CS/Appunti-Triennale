@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La mia pagina web</title>
+    <style>
+        body {
+            background-color: #022B3A;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: antiquewhite;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+
+        .logo {
+            font-size: 60px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .columns {
+            display: flex;
+            justify-content: space-between;
+            border-top: 3px solid #022B3A;
+            border-bottom: 3px solid #022B3A;
+        }
+
+        .column {
+            width: 15%;
+            border: 1px solid #022B3A;
+            padding: 10px;
+        }
+
+        .menu {
+            text-align: right;
+        }
+
+        .footer {
+            height: 150px;
+            background-color: #022B3A;
+            color: white;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        @media (max-width: 800px) {
+            .container {
+                width: 400px;
+            }
+
+            .columns {
+                flex-wrap: wrap;
+            }
+
+            .column {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .menu {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Titolo della pagina</h1>
+        <div class="logo">&#8887;</div>
+        <div class="columns">
+            <div class="column">Colonna 1</div>
+            <div class="column">Colonna 2</div>
+            <div class="column">Colonna 3</div>
+        </div>
+        <div class="menu">
+            <a href="#">Link 1</a> |
+            <a href="#">Link 2</a> |
+            <a href="#">Link 3</a>
+        </div>
+    </div>
+    <div class="footer">
+        Footer
+    </div>
+</body>
+</html>

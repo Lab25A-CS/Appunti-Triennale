@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dayjs": "^1.11.11",
+    "dotenv": "^16.4.5"
+  }
+}

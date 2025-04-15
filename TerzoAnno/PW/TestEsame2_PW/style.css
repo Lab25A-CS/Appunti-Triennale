@@ -1,0 +1,37 @@
+body{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.container{
+    min-width: 400px;
+    width: 100%;
+    max-width: 1000px;
+    border: 1px solid #000;
+}
+
+header, footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px 0;
+    border: 1px solid #000;
+}
+
+main{
+    height: 80vh;
+    border: 1px solid #000;
+    position: relative; /*necessario per il posizionamento assoluto dei quadrati*/
+}
+
+@media (min-width: 600px){
+    .container{
+        width: 500px;
+    }
+}
+
+@media (min-width: 1000px){
+    .container{
+        width: 800px;
+    }
+}
