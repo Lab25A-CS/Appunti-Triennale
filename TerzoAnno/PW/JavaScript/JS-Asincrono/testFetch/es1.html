@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="main-title">Prova Fetch</h1>
+    <button>Fetch</button>
+    <div class="container"></div>
+    <script>
+      const titolo = document.querySelector(".main-title");
+      titolo.innerText = "Nuovo Titolo";
+      const container = document.querySelector(".container");
+      const button = document.querySelector("button");
+      button.addEventListener("click", () => {
+        button.style.backgroundColor = "red";
+        const res = fetch("data.txt");
+        res
+          .then((val) => {
+            console.log(val);
+            return val.text();
+          })
+          .then((txt) => {
+            container.innerHTML = txt;
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      });
+    </script>
+  </body>
+</html>

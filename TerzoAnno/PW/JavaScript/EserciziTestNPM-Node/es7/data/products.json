@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "nome": "NOZZINNÀ - VERMENTINO DI GALLURA SUPERIORE AMABILE DOCG 2020 (BOTTLE 75 CL)",
+    "cantina": "Cantina Li Duni",
+    "luogo": "Badesi",
+    "prezzo": 30.79,
+    "prezzoScontato": 19.09,
+    "voto": 4.7,
+    "review": 20
+  },
+  {
+    "id": 2,
+    "nome": "VILLA SOLAIS - VERMENTINO DI SARDEGNA DOC 2020 (BOTTLE 75 CL)",
+    "cantina": "Cantina di Santadi",
+    "luogo": "Sud Sardegna",
+    "prezzo": 11.09,
+    "prezzoScontato": 7.54,
+    "voto": 4.3,
+    "review": 8
+  },
+  {
+    "id": 3,
+    "nome": "LATINIA - VINO DA UVE STRAMATURE IGT 2015 (BOTTLE 375 ML)",
+    "cantina": "Cantina di Santadi",
+    "luogo": "Sud Sardegna",
+    "prezzo": 30.4,
+    "prezzoScontato": 19.76,
+    "voto": 4.3,
+    "review": 3
+  },
+  {
+    "id": 4,
+    "nome": "ANGIALIS - VINO DA UVE STRAMATURE IGT 2015 (BOTTLE 50 CL) ",
+    "cantina": "Argiolas",
+    "luogo": "Siurgus Donigala (CA)",
+    "prezzo": 34.7,
+    "prezzoScontato": 27.76,
+    "voto": 3.9,
+    "review": 12
+  },
+  {
+    "id": 5,
+    "nome": "BLU - VERMENTINO DI SARDEGNA DOC 2019 (BOTTLE 75 CL)",
+    "cantina": "Cantina Santa Maria La Palma",
+    "luogo": "Alghero (SS)",
+    "prezzo": 9.76,
+    "prezzoScontato": 6.64,
+    "voto": 4.3,
+    "review": 34
+  }
+]

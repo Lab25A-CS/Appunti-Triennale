@@ -1,0 +1,8 @@
+GET http://localhost:3000/libri
+
+###
+GET http://localhost:3000/libri/2
+
+
+###
+GET http://localhost:3000/libri/7

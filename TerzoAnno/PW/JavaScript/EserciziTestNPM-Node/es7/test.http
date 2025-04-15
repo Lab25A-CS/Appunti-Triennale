@@ -1,0 +1,22 @@
+GET http://localhost:3000/api/v1/products
+
+###  Get a product
+GET http://localhost:3000/api/v1/products/6
+
+### Create a product
+POST http://localhost:3000/api/v1/products
+Content-Type: application/json
+
+{
+    "id": 6,
+    "nome": "Barbagia Rosso IGT ",
+    "cantina": "Teularju ",
+    "luogo": "Mamoiada (NU)",
+    "prezzo": 49.00,
+    "prezzoScontato": 48.99,
+    "voto": 4.9,
+    "review": 3
+}
+
+### Delete a product
+DELETE http://localhost:3000/api/v1/products/5

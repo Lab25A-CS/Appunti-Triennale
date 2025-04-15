@@ -1,0 +1,19 @@
+GET http://127.0.0.1:3000
+
+###
+GET http://127.0.0.1:3000/ciao?nome=Pierpaolo&cognome=Loreti
+
+###
+GET http://127.0.0.1:3000/user/1234
+
+###
+GET http://127.0.0.1:3000/miao
+
+###
+POST http://127.0.0.1:3000/user
+Content-Type: application/json
+
+{
+    "nome": "Franco",
+    "cognome": "Salvucci"
+}

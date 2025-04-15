@@ -1,0 +1,35 @@
+{
+    "esami": [
+      {
+        "id": 1,
+        "nome": "Matematica",
+        "data": "2024-05-10",
+        "voto": 28
+      },
+      {
+        "id": 2,
+        "nome": "Fisica",
+        "data": "2024-06-15",
+        "voto": 30
+      },
+      {
+        "id": 3,
+        "nome": "Chimica",
+        "data": "2024-04-20",
+        "voto": 27
+      },
+      {
+        "id": 4,
+        "nome": "Informatica",
+        "data": "2024-03-18",
+        "voto": 29
+      },
+      {
+        "id": 5,
+        "nome": "Sistemi e Reti",
+        "data": "2023-03-10",
+        "voto": "30L"
+      }
+    ]
+  }
+  

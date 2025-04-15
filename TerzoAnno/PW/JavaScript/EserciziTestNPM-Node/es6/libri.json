@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "titolo": "Il Signore degli Anelli",
+    "autore": "J.R.R. Tolkien",
+    "genere": "Fantasy"
+  },
+  {
+    "id": "2",
+    "titolo": "Il Trono di Spade",
+    "autore": "George R.R. Martin",
+    "genere": "Fantasy"
+  },
+  {
+    "id": "3",
+    "titolo": "Il Piccolo Principe",
+    "autore": "Antoine de Saint-Exupéry",
+    "genere": "Fiabe"
+  }
+]
