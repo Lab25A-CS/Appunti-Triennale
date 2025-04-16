@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Esame 1</title>
+    <style></style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Frasi del giorno</h1>
+      <p>Clicca sul numero per scoprire la frase</p>
+      <ul class="lista"></ul>
+      <div class="frasi">
+        <p class="frase">AAAA</p>
+        <p class="numero">89</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    loadFrasi = async function () {
+      const res = await fetch("http://127.0.0.1:3000/citations");
+      const resp_json = await res.json();
+      const frasi = resp_json.data;
+      console.log("Frasi",frasi)
+      frasi.forEach((element) => {
+        const li = document.createElement("li");
+        li.innerHTML = element.ID;
+        li.addEventListener("click", () => {
+          document.querySelector(".frase").innerHTML = element.frase;
+          document.querySelector(".numero").innerHTML = element.valore;
+        });
+        document.querySelector(".lista").appendChild(li);
+      });
+    };
+
+    loadFrasi();
+  </script>
+</html>
