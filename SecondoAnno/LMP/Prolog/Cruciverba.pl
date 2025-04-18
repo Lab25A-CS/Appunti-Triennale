@@ -1,0 +1,25 @@
+word(d,o,g).
+word(r,u,n).
+word(t,o,p).
+word(f,o,u,r).
+word(l,o,s,t).
+word(f,i,v,e).
+word(u,n,i,t).
+word(m,e,s,s).
+word(b,a,k,e,r).
+word(f,o,r,u,m).
+word(s,u,p,e,r).
+word(g,r,e,e,n).
+word(p,r,o,l,o,g).
+word(v,a,n,i,s,h).
+word(y,e,l,l,o,w).
+word(w,o,n,d,e,r).
+schema(A1,A2,A3,A4,A5,
+       B1,B3,B5,
+       C1,C2,C3,C4,C5,C6,
+       D1,D5):-
+    word(A1,A2,A3,A4,A5),
+    word(C1,C2,C3,C4,C5,C6),
+    word(A1,B1,C1,D1),
+    word(A3,B3,C3),
+    word(A5,B5,C5,D5).
