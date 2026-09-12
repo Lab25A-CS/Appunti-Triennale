@@ -28,6 +28,7 @@ I corsi sono così suddivisi:
   - [Ingegneria del Software](TerzoAnno/IS/): Appunti del corso di Ingegneria del Software
   - [PJDM](TerzoAnno/PJDM/): Appunti del corso di Programmazione Java per Dispositivi Mobili
   - [Programmazione Web](TerzoAnno/PW/): Appunti del corso di Programmazione Web
+  - [Guida italiana a TypeScript](https://gibbok.github.io/typescript-book/it-it/): Libro gratuito e open source per approfondire TypeScript
   - [VDSI](TerzoAnno/VDSI/): Appunti del corso di Vulnerabilità e Difesa dei Sistemi Informatici
 
 Fanne buon uso
